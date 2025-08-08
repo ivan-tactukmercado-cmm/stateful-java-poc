@@ -1,0 +1,11 @@
+services:
+
+services:
+
+  stateful-java-poc:
+    container_name: stateful-java-poc
+    image: dev.local/bamoe-apps/stateful-java-poc:1.0.0-SNAPSHOT
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "127.0.0.1:host-gateway"
