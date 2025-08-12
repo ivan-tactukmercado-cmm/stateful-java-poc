@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_4425AF23-1734-4A3E-92E6-EC742B2A6E6E" id="_F68FA036-4DCD-4B64-9832-9CE8CB098507" name="amountCheck">
+  <itemDefinition id="_82B47CA9-23E5-4837-A382-ECBC31544BBF" name="tApplicant" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+    <itemComponent id="_550D0CA0-30BC-4DD7-85B8-D141E653ED09" name="Experia Score" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>number</typeRef>
+    </itemComponent>
+    <itemComponent id="_9E3216F9-1828-4FDE-BD2D-C6ABAC2B5CC1" name="Equifax Score" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>number</typeRef>
+    </itemComponent>
+  </itemDefinition>
+  <decision name="InterestRate" id="_7A059E1C-0D36-4148-98C7-31506DE6E066">
+    <variable name="InterestRate" id="_F9DC0588-9C0B-45AE-976E-D5E739AA23C5" typeRef="number" />
+    <informationRequirement id="_FE7877BD-BBA3-4AD2-9AD0-A73CBF4FC5E7">
+      <requiredInput href="#_A055B52F-53FF-4C43-812F-E51F2DE72317" />
+    </informationRequirement>
+    <decisionTable id="_F995D514-4AD9-4A26-8946-0EE7EA58CED6" typeRef="number" hitPolicy="UNIQUE" label="InterestRate">
+      <input id="_556E63FC-0BC1-42A3-A467-69DF45CB3318">
+        <inputExpression id="_0AC80D69-05D5-41D3-988E-0DDDB00202A1" typeRef="number">
+          <text>Applicant.Experia Score</text>
+        </inputExpression>
+      </input>
+      <input id="_22287C34-432E-491F-A1ED-905DE24573A8">
+        <inputExpression id="_1CF87132-8A34-403E-B597-542382800CEE" typeRef="number">
+          <text>Applicant.Equifax Score</text>
+        </inputExpression>
+      </input>
+      <output id="_06B4FF92-7F7F-4D7B-B50B-A77A1AB0B00E" />
+      <annotation name="Annotations" />
+      <rule id="_12FCD04D-3E8F-4FD0-9D23-721F3B04B624">
+        <inputEntry id="_B807507C-CE6E-4F35-84A0-037667071CB6">
+          <text>[600..700)</text>
+        </inputEntry>
+        <inputEntry id="_231022CB-D1B4-487B-A842-23134C8EDF06">
+          <text>[600..700)</text>
+        </inputEntry>
+        <outputEntry id="_59A346AC-9C8B-4290-B602-1B2CD8BA1A9A">
+          <text>10</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Your annotations here</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_3D6D1BA5-669E-4431-930E-590A460D38B2">
+        <inputEntry id="_1964A2E9-3E48-4F8A-BECF-418551CFDFA6">
+          <text>[700..800)</text>
+        </inputEntry>
+        <inputEntry id="_623B3475-A139-485E-BA2C-709E3CB6268B">
+          <text>[700..800)</text>
+        </inputEntry>
+        <outputEntry id="_1160F730-9CEE-424A-8CBA-ACA5D3216B40">
+          <text>9</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_5CF94B4F-F84B-4874-B1A5-2630085F02C9">
+        <inputEntry id="_66B3D6E2-E75A-4418-B90D-46033C490AD9">
+          <text>[800..850]</text>
+        </inputEntry>
+        <inputEntry id="_3AFC4855-E7DF-4AFF-B18C-9B329531759D">
+          <text>[800..850]</text>
+        </inputEntry>
+        <outputEntry id="_8B0C9A7E-FA69-4AD8-BD7C-F584ED6F6E7F">
+          <text>8</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData name="Applicant" id="_A055B52F-53FF-4C43-812F-E51F2DE72317">
+    <variable name="Applicant" id="_2DD108F6-A7CB-4FA8-920B-BFB02C112B48" typeRef="tApplicant" />
+  </inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_8DEEB250-C4A0-484F-896E-0452E57F5F6C" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_F995D514-4AD9-4A26-8946-0EE7EA58CED6">
+            <kie:width>60</kie:width>
+            <kie:width>174</kie:width>
+            <kie:width>174</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_904D6376-8679-44EB-8F03-F80791F00A0D" dmnElementRef="_A055B52F-53FF-4C43-812F-E51F2DE72317" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="100" y="160" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_3145A3F1-A810-481A-90D3-906A43639315" dmnElementRef="_7A059E1C-0D36-4148-98C7-31506DE6E066" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="380" y="200" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_384B5FA5-51DF-464B-9D15-F982B590B520" dmnElementRef="_FE7877BD-BBA3-4AD2-9AD0-A73CBF4FC5E7" sourceElement="_904D6376-8679-44EB-8F03-F80791F00A0D" targetElement="_3145A3F1-A810-481A-90D3-906A43639315">
+        <di:waypoint x="180" y="200" />
+        <di:waypoint x="380" y="240" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
